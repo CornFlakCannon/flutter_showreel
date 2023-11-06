@@ -29,6 +29,7 @@ class GalleryButtons extends StatelessWidget {
   }
 }
 
+
 class _GalleryButton extends StatelessWidget {
   final String ImagePath;
   final String Content;
