@@ -17,16 +17,14 @@ The code is actually this repo - I hope I remember to update these screenshots a
 # TODO LIST:
 1. [ ] Create actual empty pages for redirection
 2. [ ] Transform the navbar entries to buttons highlighted with underline
-3. [ ] Manage different window sizes
-<details>
-  
-(Partially done as you can se here:)
-![ResizedFirstTry](https://github.com/CornFlakCannon/flutter_showreel/assets/137178601/4db7a5c5-a280-4573-8ef9-cc0845fb5510)
-
-</details>
+3. [ ] Manage different window sizes 
 4. [ ] Get to actually decent transitions between different widgets - in cases like (see below)
+
 <details>
-  
+![ResizedFirstTry](https://github.com/CornFlakCannon/flutter_showreel/assets/137178601/4db7a5c5-a280-4573-8ef9-cc0845fb5510)
+</details>
+
+<details>
 ```dart
 class _NavBarSearch extends StatelessWidget {
 //The Actual Search Bar that I put together as a private class of NavBar (my navigation bar at the top)
@@ -53,5 +51,4 @@ class _NavBarSearch extends StatelessWidget {
   }
 }
 ```
-
 </details>
