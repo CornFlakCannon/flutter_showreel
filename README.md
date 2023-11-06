@@ -17,7 +17,7 @@ The code is actually this repo - I hope I remember to update these screenshots a
 # TODO LIST:
 1. [ ] Create actual empty pages for redirection
 2. [ ] Transform the navbar entries to buttons highlighted with underline
-3. [-] Manage different window sizes
+3. [ ] Manage different window sizes
 <details>
   
 (Partially done as you can se here:)
