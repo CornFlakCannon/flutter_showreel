@@ -10,19 +10,22 @@ class HeaderText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 50, left: 40, bottom: 50),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                BigTitle,
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
-              ),
-              Text(SubTitle),
-            ],
-          ),
-        ],
+      child: Flexible(
+        child: Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  BigTitle,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+                ),
+                Text(SubTitle),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
