@@ -35,7 +35,38 @@ The code is actually this repo - I hope I remember to update these screenshots a
 </details>
 
 <details>
+# NEW
 
+```dart
+class _NavBarSearch extends StatelessWidget {
+  const _NavBarSearch({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      if (constraints.maxWidth < 100) {
+        return IconButton(onPressed: () {}, icon: const Icon(Icons.search));
+      } else {
+        return SearchBar(
+          constraints: const BoxConstraints(minHeight: 50, maxHeight: 100),
+          shape: MaterialStateProperty.all(
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+          ),
+          hintText: "Search...",
+        );
+      }
+    });
+  }
+}
+```
+  
+# OLD 
+  
   ```dart
 class _NavBarSearch extends StatelessWidget {
 //The Actual Search Bar that I put together as a private class of NavBar (my navigation bar at the top)
