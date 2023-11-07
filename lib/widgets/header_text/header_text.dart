@@ -8,25 +8,58 @@ class HeaderText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 50, left: 40, bottom: 50),
-      child: Flexible(
+    return _SpacingUpperLower(
+      child: Container(
+        height: 100,
         child: Row(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  BigTitle,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
-                ),
-                Text(SubTitle),
-              ],
+            const SizedBox(
+              width: 50,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    BigTitle,
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+                  ),
+                  Text(
+                    SubTitle,
+                    overflow: TextOverflow.fade,
+                    maxLines: 2,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              width: 20,
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _SpacingUpperLower extends StatelessWidget {
+  final Widget child;
+  const _SpacingUpperLower({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(
+          height: 50,
+        ),
+        child,
+        const SizedBox(
+          height: 50,
+        ),
+      ],
     );
   }
 }

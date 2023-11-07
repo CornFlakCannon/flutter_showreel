@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_showreel/widgets/navigation_bar_items/navigation_bar_item.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -16,12 +17,12 @@ class NavBar extends StatelessWidget {
               width: 100,
               child: Image.asset('assets/logo.png'),
             ),
-            _NavbarItem("Home"),
-            _NavbarItem("Funding Programs"),
-            _NavbarItem("Sites"),
-            _NavbarItem("Apply"),
-            _NavbarItem("My Dashboard"),
-            DropdownMenu(
+            const NavbarItem("Home"),
+            const NavbarItem("Funding Programs"),
+            const NavbarItem("Sites"),
+            const NavbarItem("Apply"),
+            const NavbarItem("My Dashboard"),
+            const DropdownMenu(
               width: 120,
               inputDecorationTheme: InputDecorationTheme(
                 border: InputBorder.none,
@@ -60,36 +61,22 @@ class _NavBarSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width < 1000) {
-      return IconButton(onPressed: () {}, icon: Icon(Icons.search));
-    } else {
-      return SearchBar(
-        constraints: BoxConstraints(minHeight: 50, maxHeight: 100),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      if (constraints.maxWidth < 100) {
+        return IconButton(onPressed: () {}, icon: const Icon(Icons.search));
+      } else {
+        return SearchBar(
+          constraints: const BoxConstraints(minHeight: 50, maxHeight: 100),
+          shape: MaterialStateProperty.all(
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
           ),
-        ),
-        hintText: "Search...",
-      );
-    }
-  }
-}
-
-class _NavbarItem extends StatelessWidget {
-  final String title;
-  const _NavbarItem(this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        child: Text(
-          title,
-        ),
-      ),
-    );
+          hintText: "Search...",
+        );
+      }
+    });
   }
 }
 

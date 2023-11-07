@@ -11,30 +11,36 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 231, 240, 240),
       body: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: 60.0,
-          horizontal: 100.0,
+        padding: const EdgeInsets.only(
+          top: 60.0,
+          left: 100.0,
+          right: 100.0,
         ),
         alignment: Alignment.topCenter,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(
-              color: Color.fromARGB(255, 236, 232, 232),
-              width: 10.0,
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: Color.fromARGB(255, 236, 232, 232),
+                  width: 10.0,
+                ),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
+              ),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 1800),
+                child: const Column(
+                  children: <Widget>[
+                    NavBar(),
+                    HeaderText(),
+                    GalleryButtons(),
+                  ],
+                ),
+              ),
             ),
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
-          ),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 1800),
-            child: const Column(
-              children: <Widget>[
-                NavBar(),
-                HeaderText(),
-                GalleryButtons(),
-              ],
-            ),
-          ),
+          ],
         ),
       ),
     );

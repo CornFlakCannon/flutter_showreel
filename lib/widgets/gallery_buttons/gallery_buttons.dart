@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_showreel/structs/image_route.dart';
+import 'package:flutter_showreel/views/testpages/gallery_route_1/gallery_route_1.dart';
 
 class GalleryButtons extends StatelessWidget {
   const GalleryButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 100, right: 100),
-      child: Row(
+    return Container(
+      constraints: BoxConstraints(maxWidth: 1500),
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
               child: _GalleryButton(
@@ -29,7 +31,6 @@ class GalleryButtons extends StatelessWidget {
   }
 }
 
-
 class _GalleryButton extends StatelessWidget {
   final String ImagePath;
   final String Content;
@@ -37,23 +38,46 @@ class _GalleryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var imageRoute =
+        ImageRoute(Image.asset(ImagePath), _imageDescription(Content));
+
     return Padding(
-      padding: const EdgeInsets.all(3.0),
-      child: Container(
-        width: 150,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.asset(ImagePath),
-            Text(
-              Content,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w400,
-              ),
+      padding: const EdgeInsets.all(10.0),
+      child: GestureDetector(
+        child: Stack(children: [
+          Image.asset(ImagePath),
+          Text(
+            Content,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w400,
             ),
-          ],
-        ),
+          ),
+        ]),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => GalleryRoute(imageRoute)));
+        },
+      ),
+    );
+  }
+}
+
+class _imageDescription extends StatelessWidget {
+  final String description;
+  const _imageDescription(this.description);
+
+  @override
+  Widget build(BuildContext context) {
+    //Center is already in the detination route
+    return Padding(
+      padding: const EdgeInsets.all(50.0),
+      child: Column(
+        children: [
+          Text(description),
+        ],
       ),
     );
   }
